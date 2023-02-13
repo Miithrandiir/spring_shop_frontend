@@ -1,0 +1,47 @@
+@import "@fortawesome/fontawesome-svg-core/styles.css";
+
+
+#root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+main {
+  display: flex;
+  width: 100%;
+  & > header {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    background: #FFFFFF;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    gap: 50px;
+    align-items: center;
+    padding: 10px;
+    color: black;
+    &>h1 {
+      color: #333333;
+    }
+    &>ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    &>.login {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: #e6e6e6;
+      border: 1px solid rgba(0,0,0,0.15);
+      padding: 10px;
+      color: black  ;
+      border-radius: 5px;
+      &>a {
+        color: black;
+        text-decoration: none;
+      }
+    }
+  }
+}
