@@ -1,7 +1,6 @@
 import {MouseEventHandler, useState} from 'react'
 import './App.scss'
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUser} from "@fortawesome/free-solid-svg-icons"
+
 import CategoriesComponent from "./components/CategoriesComponent";
 
 function App() {
@@ -28,7 +27,7 @@ function App() {
                     <li><a href={'#'}>Mon compte</a></li>
                 </ul>
                 <div className={"login"}>
-                    <FontAwesomeIcon icon={faUser}/>
+                    <i className={"fas fa-user"}></i>
                     <a href={"/"}>Connexion</a>
                 </div>
             </header>
