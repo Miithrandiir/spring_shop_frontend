@@ -1,0 +1,203 @@
+@import "checkbox";
+
+$input_padding_x: 10px;
+$input_padding_y: 15px;
+$input_padding: $input_padding_x $input_padding_y;
+$input_border: 0.15rem solid var(--color-input-border);
+
+div.form-group, div.form-row {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-left: 5px;
+  }
+
+  .form-help, .help-text {
+    color: var(--color-text-help);
+    text-align: right;
+    font-size: 0.8em;
+  }
+
+  a.form-help, a.help-text {
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-text);
+    }
+  }
+}
+
+label{
+  color: var(--color-text);
+}
+
+input, textarea {
+  background: var(--color-input-background);
+  border: $input_border;
+  padding: $input_padding;
+  border-radius: 5px;
+
+  font-size: 16px;
+  color: var(--color-text);
+  margin: 2px 0;
+  outline: none;
+
+  &:focus:not(:disabled) {
+    border-color: var(--color-input-border_focus);
+  }
+
+  &::placeholder {
+    color: var(--color-text_hover);
+    font-style: italic;
+  }
+
+  &:disabled {
+    color: var(--color-text_hover);
+    font-style: italic;
+    cursor: not-allowed;
+    background: var(--color-input-background_disabled);
+    border-color: var(--color-input-border_disabled);
+  }
+
+}
+
+form:not(.no-form), .form {
+  display: grid;
+  grid-template-columns: 1fr;
+  //grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px 20px;
+
+  @media screen and (min-width: 700px){
+    grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+  }
+
+  & > .form-row, & > .form-check, & > .form-checkbox {
+    grid-column: 1/ -1;
+  }
+
+  & > .form-submit {
+    grid-column: 1/ -1;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    margin: 5px 0;
+
+    & > * {
+      margin: 5px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+ul.form-error {
+  padding: 0;
+  list-style: none;
+  font-weight: 300;
+  font-size: 0.9em;
+
+  font-style: italic;
+  color: map-get($colors, "red");
+  text-align: right;
+  margin: 2px 0 10px;
+}
+
+
+textarea {
+  font-family: Roboto, sans-serif;
+  min-height: 100px;
+}
+
+.form-row.form-check, .form-row.form-checkbox {
+  &.form-check-end, &.form-checkbox {
+    justify-content: flex-end;
+  }
+
+  flex-direction: row;
+
+  label {
+    padding: 0;
+  }
+}
+
+.form-check, .form-checkbox {
+  & > ul.form-error {
+    text-align: left;
+  }
+
+  @include form_checkbox_container;
+}
+
+
+$tomSelect-margin: 5px;
+.ts-wrapper > div.plugin-dropdown_input input {
+  background: var(--color-input-background);
+}
+
+.ts-wrapper.multi > div.ts-control {
+  padding: (10px - 0px) ($input_padding_y - $tomSelect-margin) ($input_padding_x - $tomSelect-margin - 0px) $input_padding_y;
+
+  & > div.item {
+    background: rgba(0, 0, 0, 0.14);
+    border-radius: 3px;
+    color: var(--color-text);
+    padding: 0 6px;
+    margin: 0 $tomSelect-margin $tomSelect-margin 0;
+    font-size: 14px;
+
+  }
+}
+
+.ts-wrapper > div.ts-control {
+  border: $input_border;
+  border-radius: 5px;
+  background: var(--color-input-background) !important;
+  padding: $input_padding;
+  font-size: 18px;
+  line-height: 14px;
+  min-height: 40px;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  color: var(--color-text);
+
+  & > div.item {
+    width: 100%;
+
+    & > a.remove {
+      margin-left: auto;
+      border-left: 0;
+    }
+  }
+}
+
+div.ts-dropdown {
+  border-top: none;
+  border-radius: 5px;
+  box-shadow: none;
+  border-right: 2px solid var(--color-input-border);
+  border-left: 2px solid var(--color-input-border);
+  border-bottom: 2px solid var(--color-input-border);
+  background: var(--color-input-background) !important;
+  font-size: 16px;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  margin: 0;
+
+  & > .ts-dropdown-content > * {
+
+    color: var(--color-text);
+    padding: $input_padding;
+
+    &.active, &:hover {
+      color: var(--color-text_inverse);
+      background: var(--color-input-border_focus);
+    }
+  }
+}

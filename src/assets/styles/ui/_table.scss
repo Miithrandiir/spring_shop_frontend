@@ -1,0 +1,51 @@
+$table-separator: #eee;
+$table-border-size: 1px;
+table {
+  margin: 10px 0;
+  width: 100%;
+  border-collapse: collapse;
+  border: $table-border-size solid var(--table-border);
+  font-size: 15px;
+
+
+  & > thead {
+    background: var(--table-head-background);
+    font-size: 18px;
+
+    td, th {
+      padding: 16px 15px;
+    }
+  }
+
+  & > tbody {
+    //font-size: 14px;
+    color: var(--table-color);
+    background: var(--table-content-background);
+  }
+
+  td, th {
+    padding: 14px 15px;
+    text-align: left;
+
+    ul {
+      margin: 0;
+    }
+
+    &:not(:last-child) {
+      border-right: $table-border-size solid var(--table-border);
+    }
+  }
+
+  tr:not(:last-child) > td, thead > tr > td {
+    border-bottom: $table-border-size solid var(--table-border);
+  }
+
+  tr:not(.keep-margin) td:not(.keep-margin) .hstack, tr:not(.keep-margin) td:not(.keep-margin) .vstack {
+    margin: 2px 2px;
+
+    & > a {
+      margin: 0;
+    }
+  }
+
+}

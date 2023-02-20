@@ -1,0 +1,122 @@
+$btn_disable_mix_amount: $fluent_color_mix - 30%;
+$btn_hover_mix_amount: $fluent_color_mix - 15%;
+$btn_mix_amount: $fluent_color_mix;
+
+$default_color: $light_blue_color;
+$default_background_color: mix($default_color, white, $btn_mix_amount);
+
+.btn {
+  padding: 10px 10px;
+  box-sizing: border-box;
+  display: inline-block;
+
+  &.btn-small {
+    padding: 6px 10px;
+    font-size: 0.8em;
+  }
+  &.btn-fit {
+    width: fit-content;
+  }
+
+  border-radius: 7px;
+
+
+  font-family: Roboto, sans-serif;
+
+  background: $default_background_color;
+  border: 2px solid $default_background_color;
+  color: darken($default_color, 5%);
+
+  text-decoration: unset;
+  cursor: pointer;
+  outline: none;
+
+  & > img {
+    width: 18px;
+  }
+
+  &.btn-fluent {
+    background: transparent;
+    color: white;
+
+    &:not(:disabled):not([disabled]):hover {
+      background: $light_blue_color;
+      border-color: $light_blue_color;
+      color: white;
+    }
+  }
+
+  &.btn-inverse, &.btn-outline {
+    background: transparent;
+    color: $light_blue_color;
+
+    &:not(:disabled):not([disabled]):hover {
+      background: $light_blue_color;
+      border-color: $light_blue_color;
+      color: white;
+    }
+  }
+
+  &:not(:disabled):not([disabled]):hover {
+    border-color: mix($default_color, white, $btn_hover_mix_amount);
+    background-color: mix($default_color, white, $btn_hover_mix_amount);
+    color: darken($default_color, 8%);
+  }
+
+  @each $class, $color in $colors {
+    &.btn-#{$class} {
+
+
+      background: mix($color, white, $btn_mix_amount);
+      border-color: mix($color, white, $btn_mix_amount);
+      color: darken($color, 5%);
+
+      &:not(:disabled):not([disabled]):hover {
+        border-color: mix($color, white, $btn_hover_mix_amount);
+        background-color: mix($color, white, $btn_hover_mix_amount);
+        color: darken($color, 8%);
+      }
+
+
+      &:disabled, &[disabled] {
+        background-color: mix($color, white, $btn_hover_mix_amount);
+        border-color: mix($color, white, $btn_hover_mix_amount);
+        color: lighten($color, 20%);
+      }
+
+    }
+  }
+
+  &.btn-game {
+    background: #FFFFFF;
+    color: #818181;
+    border: 2px solid #818181;
+
+    &:not(:disabled):not([disabled]):hover {
+      background: #818181;
+      color: #FFFFFF;
+      border-color: #818181;
+    }
+  }
+
+  i {
+    &:first-child {
+      margin-left: 0;
+    }
+
+    margin: 0 4px;
+
+    &:last-child {
+      margin-left: 0;
+    }
+  }
+
+  &:disabled, &[disabled] {
+    cursor: not-allowed;
+    background-color: mix($light_blue_color, white, $btn_disable_mix_amount);
+    border-color: mix($light_blue_color, white, $btn_disable_mix_amount);
+    color: lighten($light_blue_color, 5%);
+  }
+
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}

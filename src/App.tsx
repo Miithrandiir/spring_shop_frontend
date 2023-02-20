@@ -1,9 +1,11 @@
-import {MouseEventHandler, useState} from 'react'
-import './App.scss'
+import {useState} from 'react'
+import React from "react";
 
 import CategoriesComponent from "./components/CategoriesComponent";
 
-function App() {
+import './assets/styles/style.scss'
+import './App.scss'
+function App({children}: { children: React.ReactNode}) {
 
     const [categoriesShown, setCategoriesShown] = useState<boolean>(false);
 
@@ -32,7 +34,7 @@ function App() {
                 </div>
             </header>
             <main className={"body"}>
-
+                {children}
             </main>
         </>
     )

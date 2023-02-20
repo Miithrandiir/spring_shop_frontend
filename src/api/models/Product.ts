@@ -1,17 +1,38 @@
 export default class Product {
-    private name: string;
-    private price:number;
-    private quantity:number;
+    private _name: string;
+    private _price:number;
+    private _quantity:number;
 
-    private description:string;
-    private thumbnail:string;
+    private _description:string;
+    private _thumbnail:string;
 
 
     constructor(name: string, price: number, quantity: number, description: string, thumbnail: string) {
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
-        this.description = description;
-        this.thumbnail = thumbnail;
+        this._name = name;
+        this._price = price;
+        this._quantity = quantity;
+        this._description = description;
+        this._thumbnail = thumbnail;
+    }
+
+
+    get name(): string {
+        return this._name;
+    }
+
+    get price(): number {
+        return this._price;
+    }
+
+    get quantity(): number {
+        return this._quantity;
+    }
+
+    get description(): string {
+        return this._description;
+    }
+
+    get thumbnail(): string {
+        return this._thumbnail;
     }
 }

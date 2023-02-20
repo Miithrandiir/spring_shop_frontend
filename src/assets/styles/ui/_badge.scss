@@ -1,0 +1,48 @@
+$badge_mix_amount: $btn_mix_amount;
+
+$default_color: $light_blue_color;
+$default_background_color: mix($default_color, white, $badge_mix_amount);
+
+.badge {
+  padding: 7px 10px;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 13px;
+
+  border-radius: 30px;
+  background: $default_background_color;
+  border: 2px solid $default_background_color;
+  color: darken($default_color, 5%);
+
+  & > img {
+    width: 18px;
+  }
+
+  i {
+    &:first-child {
+      margin-left: 0;
+    }
+
+    margin: 0 4px;
+
+    &:last-child {
+      margin-left: 0;
+    }
+  }
+
+  @each $class, $color in $colors {
+    &.badge-#{$class} {
+      background: mix($color, white, $badge_mix_amount);
+      border-color: mix($color, white, $badge_mix_amount);
+      color: darken($color, 5%);
+    }
+  }
+
+  &.badge-game{
+    background: #FFFFFF;
+    border: #FFFFFF;
+    color: #818181;
+    padding: 7px 16px;
+  }
+
+}

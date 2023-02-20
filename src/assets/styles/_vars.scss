@@ -1,0 +1,90 @@
+$nav-left_width: 350px;
+
+//Colors
+$purple_color: #8B80B6;
+$green_color: #2ECC71;
+$medium_green_color: #27ae60;
+$yellow_color: #F9C043;
+$orange_color: #E67E22;
+$light_blue_color: #6A9AE8;
+$blue_color: #2980b9;
+$red_color: #E74C3C;
+$dark_red_color: #c0392b;
+$light_black_color: #2c3e50;
+$light_grey_color: #ecf0f1;
+$grey_color: #95a5a6;
+$turquoise_color: #1abc9c;
+
+$dashboard_nav-left_responsive: 1200px;
+
+$colors: (
+        'primary' : $light_blue_color,
+        'secondary' : $grey_color,
+        'turquoise' : $turquoise_color,
+        'purple' : $purple_color,
+        'green' : $green_color,
+        'medium-green' : $medium_green_color,
+        'yellow' : $yellow_color,
+        'orange' : $orange_color,
+        'light-blue' : $light_blue_color,
+        'blue' : $blue_color,
+        'red' : $red_color,
+        'danger' : $dark_red_color,
+        'light-black' : $light_black_color,
+        'light-grey' : $light_grey_color,
+        'grey' : $grey_color,
+        'dark-grey' : #3b3f4c,
+        'discord' : #5865F2,
+);
+
+$text-color: #818181;
+
+$fluent_color_mix: 35%;
+
+@each $class, $color in $colors {
+  .color-#{$class} {
+    color: var(--color-#{$class});
+  }
+}
+
+:root {
+  @each $class, $color in $colors {
+    --color-#{$class} : #{$color};
+    --color-fluent-#{$class} : #{mix($color, white, $fluent_color_mix)};
+  }
+
+  --color-main-background: #F5F5F5;
+  --color-text: #{$text-color};
+  --color-text-muted: var(--color-text);
+
+  --color-text_inverse: #F5F5F5;
+
+  --color-text_href: #{darken($text-color, 30%)};
+  --color-text_href_hover: #505050;
+  --color-text_hover: #{darken($text-color, 25%)};
+
+
+  $input_background: #F5F5F5;
+
+  --color-input-color: var(--color-h1);
+  --color-input-background: #{$input_background};
+  --color-input-border: var(--color-input-background);
+
+  --color-input-background_disabled: transparent;
+  --color-input-border_disabled: var(--color-input-background);
+
+  --color-input-border_focus: #{darken($input_background, 10%)};
+
+  --color-nav-top: #4c5259;
+  --color-nav-left: #E7EAE9;
+
+
+  --table-color: var(--color-text);
+  --table-border: #e4e4e4;
+  --table-head-background: var(--color-input-background);
+
+  --color-h1: var(--color-text_href_hover);
+  --color-h2: var(--color-h1);
+  --color-h3: var(--color-h1);
+  --color-h4: var(--color-h1);
+}

@@ -1,0 +1,42 @@
+$poi_icon_square_size: 30px;
+
+.poi-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px;
+
+  .icon-square {
+    width: $poi_icon_square_size;
+    height: $poi_icon_square_size;
+    min-width: $poi_icon_square_size;
+    min-height: $poi_icon_square_size;
+    font-size: 19px;
+  }
+
+  &.clickable > div, & > div.clickable {
+
+    border: 1px solid transparent;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.03);
+      border-color: rgba(0, 0, 0, 0.07);
+    }
+  }
+
+  & > div {
+    padding: 10px;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+
+  svg {
+    font-size: 14px;
+  }
+}
