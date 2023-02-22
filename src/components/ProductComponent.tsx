@@ -1,4 +1,5 @@
 import Product from "../api/models/Product";
+import {Link} from "react-router-dom";
 
 export default function ProductComponent(props: { product: Product }) {
 
@@ -14,10 +15,16 @@ export default function ProductComponent(props: { product: Product }) {
                     <h3>{props.product.name}</h3>
                     <p>{props.product.description ?? "Envie d'en savoir plus ? Contactez notre service client"}</p>
                     <h2>{props.product.price} €</h2>
-                    <a href={"/"} className={"btn btn-small btn-fit"}>
-                        <i className={"fas fa-shopping-cart"}></i>&nbsp;
-                        Ajouter au panier
-                    </a>
+                    <div className={"hstack stack-space-between"}>
+                        <Link to={"/products/"+props.product.id} className={"btn btn-small btn-fit btn-green"}>
+                            <i className={"fas fa-eye"}></i>&nbsp;
+                            Voir le produit
+                        </Link>
+                        <a href={"/"} className={"btn btn-small btn-fit"}>
+                            <i className={"fas fa-shopping-cart"}></i>&nbsp;
+                            Ajouter au panier
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

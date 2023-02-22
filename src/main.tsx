@@ -11,6 +11,8 @@ import Home from "./pages/Home";
 import ProductsByCategory from "./pages/ProductsByCategory";
 import {productsByCategoryLoader} from "./loader/ProductsByCategoryLoader";
 import Error from "./pages/Error";
+import Product from "./pages/Product";
+import {productLoader} from "./loader/ProductLoader";
 
 const router = createBrowserRouter([
     {
@@ -31,11 +33,8 @@ const router = createBrowserRouter([
     },
     {
         path: '/products/:id',
-        element: <p>WIP</p>
-    },
-    {
-        path: '/products/:id',
-        element: <p>WIP</p>
+        element: <Product/>,
+        loader: productLoader
     },
     {
         path: '/category/:id',
