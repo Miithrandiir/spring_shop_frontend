@@ -2,12 +2,13 @@ import React from "react";
 //@ts-ignore
 import {useLoaderData} from "react-router-dom";
 import {ProductLoader} from "../loader/ProductLoader";
+import ApiImageComponent from "../components/ApiImageComponent";
 
 export default function Product() {
 
     const data = useLoaderData();
 
-    if(!(data instanceof ProductLoader)) {
+    if (!(data instanceof ProductLoader)) {
         return <h1>Product not found</h1>
     }
 
@@ -15,7 +16,10 @@ export default function Product() {
         <div className={"content w-100"}>
             <section className={"hstack stack-center stack-vcenter m-5 stack-space-evenly"}>
                 <figure>
-                    <img src={"https://picsum.photos/500"} alt={"Product"}/>
+                    {data.product.thumbnail !== null ?
+                        <ApiImageComponent src={data.product.thumbnail} alt={data.product.name} width={500} height={500}
+                                           style={{objectFit: "contain"}}/> :
+                        <img src={"https://picsum.photos/500"} alt={data.product.name}/>}
                 </figure>
                 <div className={"vstack stack-center card w-50"}>
                     <div className={"card-body"}>
