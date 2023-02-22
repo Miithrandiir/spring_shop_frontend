@@ -13,7 +13,7 @@ export default function CategoriesComponent() {
     }, [])
 
     return <ul>
-        {categories.map(category => <li key={category.name}><a href={'#'}>{category.name}</a></li>)}
+        {categories.map(category => <li key={category.name}><a href={"/category/"+category.slug}>{category.name}</a></li>)}
     </ul>
 
 }

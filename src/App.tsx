@@ -1,10 +1,10 @@
-import {useState} from 'react'
-import React from "react";
+import React, {useState} from 'react'
 
 import CategoriesComponent from "./components/CategoriesComponent";
 
 import './assets/styles/style.scss'
 import './App.scss'
+
 function App({children}: { children: React.ReactNode}) {
 
     const [categoriesShown, setCategoriesShown] = useState<boolean>(false);
@@ -20,7 +20,7 @@ function App({children}: { children: React.ReactNode}) {
             <header>
                 <h1>SpringShop</h1>
                 <ul>
-                    <li><a href={'#'}>Accueil</a></li>
+                    <li><a href={'/'}>Accueil</a></li>
                     <li className={"categories"}>
                         <a href={'#'} onClick={toggleCategories} >Catégorie</a>
                         {categoriesShown && <CategoriesComponent/>}
