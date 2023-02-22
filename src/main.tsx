@@ -10,8 +10,13 @@ import '@fortawesome/fontawesome-free/js/brands'
 import Home from "./pages/Home";
 import ProductsByCategory from "./pages/ProductsByCategory";
 import {productsByCategoryLoader} from "./loader/ProductsByCategoryLoader";
+import Error from "./pages/Error";
 
 const router = createBrowserRouter([
+    {
+        path: '*',
+        element: <Error/>
+    },
     {
         path: '/',
         element: <Home/>
