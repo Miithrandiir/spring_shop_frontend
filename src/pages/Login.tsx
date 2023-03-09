@@ -1,8 +1,9 @@
-import {login} from "../api/AuthRepository";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {setToken} from "../store/AuthSlice";
 import {useNavigate} from "react-router-dom";
+import AuthService from "../services/AuthService";
+
 export default function Login() {
 
     const [username, setUsername] = useState<string>("");
@@ -12,7 +13,7 @@ export default function Login() {
     function processLogin(event: any) {
         event.preventDefault();
 
-        login(username,password).then((response) => {
+        AuthService.login(username,password).then((response) => {
             dispatcher(setToken(response.token));
             navigator("/");
         }).catch((error) => {

@@ -20,6 +20,7 @@ export default function ProductsByCategory() {
 
                 <div className={"grid4"}>
                     {
+                        data.products.length === 0 ? <p>Aucun produit</p> :
                         data.products.map((product: Product) => <ProductComponent key={product.name} product={product}/>)
                     }
                  </div>

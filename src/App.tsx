@@ -4,8 +4,9 @@ import CategoriesComponent from "./components/CategoriesComponent";
 
 import './assets/styles/style.scss'
 import './App.scss'
+import {useAppSelector} from "./store/AuthStore";
 
-function App({children}: { children: React.ReactNode}) {
+function App({children}: { children: React.ReactNode }) {
 
     const [categoriesShown, setCategoriesShown] = useState<boolean>(false);
 
@@ -14,6 +15,7 @@ function App({children}: { children: React.ReactNode}) {
         setCategoriesShown(!categoriesShown);
     }
 
+    const user = useAppSelector(state => state.auth.token);
 
     return (
         <>
@@ -22,16 +24,21 @@ function App({children}: { children: React.ReactNode}) {
                 <ul>
                     <li><a href={'/'}>Accueil</a></li>
                     <li className={"categories"}>
-                        <a href={'#'} onClick={toggleCategories} >Catégorie</a>
+                        <a href={'#'} onClick={toggleCategories}>Catégorie</a>
                         {categoriesShown && <CategoriesComponent/>}
                     </li>
-
-                    <li><a href={'#'}>Mon compte</a></li>
                 </ul>
-                <div className={"login"}>
-                    <i className={"fas fa-user"}></i>
-                    <a href={"/"}>Connexion</a>
-                </div>
+
+                {user ? <div className={"login"}>
+                        <i className={"fas fa-user"}></i>
+                        <a href={"/account"}>Mon compte</a>
+                    </div> :
+                    <div className={"login"}>
+                        <i className={"fas fa-user"}></i>
+                        <a href={"/login"}>Connexion</a>
+                    </div>
+                }
+
             </header>
             <main className={"body"}>
                 {children}

@@ -17,6 +17,7 @@ import {Provider} from "react-redux";
 import authStore from "./store/AuthStore";
 import Login from "./pages/Login";
 import ProtectedPath from "./components/ProtectedPath";
+import Register from "./pages/Register";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Home/>
+    },
+    {
+        path: '/register',
+        element: <Register/>
     },
     {
         path: '/products',
