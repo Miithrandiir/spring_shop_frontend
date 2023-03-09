@@ -16,9 +16,9 @@ export default function HighlightedProductComponent() {
     }, []);
 
     return <>
-        <div className={"hstack"}>
+        <div className={"hstack stack-center"}>
             {
-                products.map(product => <ProductComponent product={product} key={product.id}/>)
+                products.map((product, index) => <ProductComponent key={index} product={product}/>)
             }
         </div>
     </>
