@@ -18,7 +18,7 @@ export default function HighlightedProductComponent() {
     return <>
         <div className={"hstack"}>
             {
-                products.map(product => <ProductComponent product={product}/>)
+                products.map(product => <ProductComponent product={product} key={product.id}/>)
             }
         </div>
     </>
