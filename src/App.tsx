@@ -9,6 +9,9 @@ import {useAppSelector} from "./store/AuthStore";
 function App({children}: { children: React.ReactNode }) {
 
     const [categoriesShown, setCategoriesShown] = useState<boolean>(false);
+    const basket = useAppSelector(state => state.orders.orders);
+
+    // const [products, setProducts] = useState<Product[]>([]);
 
     const toggleCategories = (event: any) => {
         event.preventDefault();
@@ -29,15 +32,20 @@ function App({children}: { children: React.ReactNode }) {
                     </li>
                 </ul>
 
-                {user ? <div className={"login"}>
-                        <i className={"fas fa-user"}></i>
-                        <a href={"/account"}>Mon compte</a>
-                    </div> :
+                <div>
+                    <div className={"basket"}>
+                        <i className={"fas fa-shopping-basket"}></i>
+                        <a href={"/basket"}>
+                            {basket.length > 0 && <span>[{basket.length}] </span>}
+                            Panier
+                        </a>
+                    </div>
+
                     <div className={"login"}>
                         <i className={"fas fa-user"}></i>
-                        <a href={"/login"}>Connexion</a>
+                        {user ? <a href={"/account"}>Mon compte</a> : <a href={"/login"}>Connexion</a>}
                     </div>
-                }
+                </div>
 
             </header>
             <main className={"body"}>

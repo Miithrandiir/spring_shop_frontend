@@ -18,6 +18,9 @@ import authStore from "./store/AuthStore";
 import Login from "./pages/Login";
 import ProtectedPath from "./components/ProtectedPath";
 import Register from "./pages/Register";
+import Account from "./pages/Account";
+import {userLoader} from "./loader/UserLoader";
+import Basket from "./pages/Basket";
 
 const router = createBrowserRouter([
     {
@@ -55,12 +58,21 @@ const router = createBrowserRouter([
         element: <Login/>
     },
     {
+        path: '/basket',
+        element: <Basket/>
+    },
+    {
         path: '/',
         element: <ProtectedPath><Outlet/></ProtectedPath>,
         children: [
             {
                 path: '/admin',
-                element: <p>ADMINISTRATIONNNNN</p>
+                element: <p>ADMINISTRATION</p>
+            },
+            {
+                path: '/account',
+                element: <Account/>,
+                loader: userLoader
             }
         ]
     }

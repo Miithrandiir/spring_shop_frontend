@@ -1,6 +1,7 @@
 import Product from "../api/models/Product";
 import {Link} from "react-router-dom";
 import ApiImageComponent from "./ApiImageComponent";
+import AddToBasketButton from "./AddToBasketButton";
 
 export default function ProductComponent(props: { product: Product }) {
 
@@ -23,10 +24,7 @@ export default function ProductComponent(props: { product: Product }) {
                             <i className={"fas fa-eye"}></i>&nbsp;
                             Voir le produit
                         </Link>
-                        <a href={"/"} className={"btn btn-small btn-fit"}>
-                            <i className={"fas fa-shopping-cart"}></i>&nbsp;
-                            Ajouter au panier
-                        </a>
+                        <AddToBasketButton productId={props.product.id}/>
                     </div>
                 </div>
             </div>

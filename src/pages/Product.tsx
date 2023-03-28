@@ -3,6 +3,7 @@ import React from "react";
 import {useLoaderData} from "react-router-dom";
 import {ProductLoader} from "../loader/ProductLoader";
 import ApiImageComponent from "../components/ApiImageComponent";
+import AddToBasketButton from "../components/AddToBasketButton";
 
 export default function Product() {
 
@@ -27,10 +28,7 @@ export default function Product() {
                         <p>{data.product.description ?? "Le produit ne présente aucune description"}</p>
                         <h2>{data.product.price} €</h2>
                         <div className={"hstack stack-space-between"}>
-                            <a href={"/"} className={"btn btn-small btn-fit btn-green"}>
-                                <i className={"fas fa-shopping-cart"}></i>&nbsp;
-                                Ajouter au panier
-                            </a>
+                            <AddToBasketButton productId={data.product.id}/>
                         </div>
                     </div>
                 </div>
