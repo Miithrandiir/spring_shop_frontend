@@ -34,6 +34,16 @@ export default function Account() {
                     </div>
                 </div>
             </section>
+
+            <section className={"hstack stack-center stack-vcenter m-5 stack-space-evenly"}>
+                <div className={"vstack stack-center card w-50"}>
+                    <div className={"card-body"}>
+                        <h1>Mes commandes</h1>
+
+                        //TODO
+                    </div>
+                </div>
+            </section>
         </div>
     </>
 

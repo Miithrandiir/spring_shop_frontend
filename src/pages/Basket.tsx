@@ -4,11 +4,13 @@ import {useEffect, useState} from "react";
 import axiosInstance from "../axios";
 import Product from "../api/models/Product";
 import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
 
 export default function Basket() {
 
     const basket = useAppSelector(state => state.orders.orders) as Array<Order>;
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
@@ -16,7 +18,11 @@ export default function Basket() {
             const data = await axiosInstance.get<Product>(`/products/${order.id}`);
             return data.data;
         })).then(setProducts);
-    }, []);
+    }, [basket]);
+
+    const onOrder = () => {
+        navigate("/checkout");
+    };
 
     return <>
         <div className={"content w-100"}>
@@ -46,7 +52,7 @@ export default function Basket() {
                             }
                         </ul>
 
-                        <a href={"/checkout"} className={"btn btn-green w-100 text-center"}>Commander</a>
+                        <a onClick={onOrder} className={"btn btn-green w-100 text-center"}>Commander</a>
                     </div>
                 </div>
             </section>

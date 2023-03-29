@@ -28,7 +28,7 @@ export default function Product() {
                         <p>{data.product.description ?? "Le produit ne présente aucune description"}</p>
                         <h2>{data.product.price} €</h2>
                         <div className={"hstack stack-space-between"}>
-                            <AddToBasketButton productId={data.product.id}/>
+                            <AddToBasketButton product={data.product}/>
                         </div>
                     </div>
                 </div>

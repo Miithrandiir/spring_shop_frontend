@@ -1,13 +1,14 @@
 import {addOrder} from "../store/OrderSlice";
 import {useDispatch} from "react-redux";
+import Product from "../api/models/Product";
 
-export default function AddToBasketButton({productId}: { productId: number }) {
+export default function AddToBasketButton({product}: { product: Product }) {
 
     const dispatch = useDispatch();
 
     const onAddToBasket = () => {
 
-        dispatch(addOrder({id: productId, quantity: 1}));
+        dispatch(addOrder({id: product.id, product: product.name, quantity: 1}));
 
     }
 

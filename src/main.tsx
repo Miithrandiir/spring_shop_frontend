@@ -21,6 +21,7 @@ import Register from "./pages/Register";
 import Account from "./pages/Account";
 import {userLoader} from "./loader/UserLoader";
 import Basket from "./pages/Basket";
+import Checkout from "./pages/Checkout";
 
 const router = createBrowserRouter([
     {
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
                 path: '/account',
                 element: <Account/>,
                 loader: userLoader
+            },
+            {
+                path: '/checkout',
+                element: <Checkout/>
             }
         ]
     }

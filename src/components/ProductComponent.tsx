@@ -24,7 +24,7 @@ export default function ProductComponent(props: { product: Product }) {
                             <i className={"fas fa-eye"}></i>&nbsp;
                             Voir le produit
                         </Link>
-                        <AddToBasketButton productId={props.product.id}/>
+                        <AddToBasketButton product={props.product}/>
                     </div>
                 </div>
             </div>

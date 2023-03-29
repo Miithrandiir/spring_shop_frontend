@@ -2,6 +2,7 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 export interface Order {
     id: number;
+    product: string;
     quantity: number;
 }
 
@@ -25,11 +26,15 @@ export const OrdersSlice = createSlice({
         removeOrder: (state, action: PayloadAction<number>) => {
             state.orders = state.orders.filter(order => order.id !== action.payload);
             localStorage.setItem("orders", JSON.stringify(state.orders));
-
+        },
+        removeAllOrders: (state) => {
+            state.orders = [];
+            localStorage.setItem("orders", JSON.stringify(state.orders));
         }
     }
 });
 
 export const {addOrder} = OrdersSlice.actions;
 export const {removeOrder} = OrdersSlice.actions;
+export const {removeAllOrders} = OrdersSlice.actions;
 export default OrdersSlice.reducer;
