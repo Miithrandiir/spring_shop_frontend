@@ -4,7 +4,7 @@ import {useLoaderData} from "react-router-dom";
 import {ProductLoader} from "../loader/ProductLoader";
 import ApiImageComponent from "../components/ApiImageComponent";
 import AddToBasketButton from "../components/AddToBasketButton";
-
+import productNoImage from '../assets/steve-johnson-YJGq5H9ofy0-unsplash.jpg'
 export default function Product() {
 
     const data = useLoaderData();
@@ -20,7 +20,7 @@ export default function Product() {
                     {data.product.thumbnail !== null ?
                         <ApiImageComponent src={data.product.thumbnail} alt={data.product.name} width={500} height={500}
                                            style={{objectFit: "contain"}}/> :
-                        <img src={"https://picsum.photos/500"} alt={data.product.name}/>}
+                        <img src={productNoImage} alt={data.product.name}/>}
                 </figure>
                 <div className={"vstack stack-center card w-50"}>
                     <div className={"card-body"}>

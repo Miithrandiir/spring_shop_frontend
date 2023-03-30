@@ -2,6 +2,7 @@ import Product from "../api/models/Product";
 import {Link} from "react-router-dom";
 import ApiImageComponent from "./ApiImageComponent";
 import AddToBasketButton from "./AddToBasketButton";
+import productNoImage from '../assets/steve-johnson-YJGq5H9ofy0-unsplash.jpg'
 
 export default function ProductComponent(props: { product: Product }) {
 
@@ -12,7 +13,7 @@ export default function ProductComponent(props: { product: Product }) {
                     props.product.thumbnail !== null ?
                         <ApiImageComponent src={props.product.thumbnail} width={200} height={200}
                                            style={{objectFit: "cover"}}/> :
-                        <img src={"https://picsum.photos/175?blur=2"} alt={props.product.name} width={200} height={200}
+                        <img src={productNoImage} alt={props.product.name} width={200} height={200}
                              style={{objectFit: "cover"}}/>
                 }
                 <div className={"vstack stack-center"}>
