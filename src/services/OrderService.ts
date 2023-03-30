@@ -3,9 +3,18 @@ import axiosInstance from "../axios";
 
 interface IOrderService {
     placeOrder(order: Array<Order>): Promise<Order>;
+
+    getOrder(): Promise<Array<Order>>;
 }
 
 class OrderService implements IOrderService {
+
+
+    async getOrder(): Promise<Array<Order>> {
+        let resp = await axiosInstance.get("/orders")
+        return resp.data
+    }
+
     placeOrder(order: Array<Order>): Promise<Order> {
         let items: { product: string; quantity: number; }[] = [];
         order.map((order: Order) => {
