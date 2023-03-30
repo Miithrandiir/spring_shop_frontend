@@ -18,13 +18,4 @@ axiosInstance.interceptors.request.use(async function (config) {
         window.location.href = "/login";
     }
 });
-
-axiosInstance.interceptors.response.use(async function (response) {
-    return response;
-}, async function (error) {
-    localStorage.removeItem("token");
-    window.location.href = "/login";
-    return Promise.reject(error);
-});
-
 export default axiosInstance;

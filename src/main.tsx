@@ -21,9 +21,11 @@ import Register from "./pages/Register";
 import Account from "./pages/Account";
 import {userLoader} from "./loader/UserLoader";
 import Basket from "./pages/Basket";
-import Checkout from "./pages/Checkout";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter([{
+    path : "/",
+    element : <App><Outlet></Outlet></App>,
+    children:[
     {
         path: '*',
         element: <Error/>
@@ -74,21 +76,15 @@ const router = createBrowserRouter([
                 path: '/account',
                 element: <Account/>,
                 loader: userLoader
-            },
-            {
-                path: '/checkout',
-                element: <Checkout/>
             }
         ]
     }
-]);
+]}]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
         <Provider store={authStore}>
-            <App>
-                <RouterProvider router={router}/>
-            </App>
+            <RouterProvider router={router}/>
         </Provider>
     </React.StrictMode>,
 )

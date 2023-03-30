@@ -5,6 +5,7 @@ import CategoriesComponent from "./components/CategoriesComponent";
 import './assets/styles/style.scss'
 import './App.scss'
 import {useAppSelector} from "./store/AuthStore";
+import {Link} from "react-router-dom";
 
 function App({children}: { children: React.ReactNode }) {
 
@@ -25,9 +26,9 @@ function App({children}: { children: React.ReactNode }) {
             <header>
                 <h1>SpringShop</h1>
                 <ul>
-                    <li><a href={'/'}>Accueil</a></li>
+                    <li><Link to={'/'}>Accueil</Link></li>
                     <li className={"categories"}>
-                        <a href={'#'} onClick={toggleCategories}>Catégorie</a>
+                        <Link to={'#'} onClick={toggleCategories}>Catégorie</Link>
                         {categoriesShown && <CategoriesComponent/>}
                     </li>
                 </ul>
@@ -35,15 +36,15 @@ function App({children}: { children: React.ReactNode }) {
                 <div>
                     <div className={"basket"}>
                         <i className={"fas fa-shopping-basket"}></i>
-                        <a href={"/basket"}>
+                        <Link to={"/basket"}>
                             {basket.length > 0 && <span>[{basket.length}] </span>}
                             Panier
-                        </a>
+                        </Link>
                     </div>
 
                     <div className={"login"}>
                         <i className={"fas fa-user"}></i>
-                        {user ? <a href={"/account"}>Mon compte</a> : <a href={"/login"}>Connexion</a>}
+                        {user ? <Link to={"/account"}>Mon compte</Link> : <Link to={"/login"}>Connexion</Link>}
                     </div>
                 </div>
 
