@@ -91,10 +91,13 @@ ul.grid2 {
 
 }
 
-.w-100 {
-  width: 100%;
-}
+$widths: (25,50, 75, 100);
 
-.h-100 {
-  height: 100%;
+@each $width in $widths {
+  .w-#{$width} {
+    width: $width*1%;
+  }
+  .h-#{$width} {
+    height: $width*1%;
+  }
 }

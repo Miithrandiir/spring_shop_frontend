@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import Product from "../api/models/Product";
-import instance from "../axios";
+import axiosInstance from "../axios";
 import ProductComponent from "./ProductComponent";
 
 export default function HighlightedProductComponent() {
@@ -9,16 +9,16 @@ export default function HighlightedProductComponent() {
 
     useEffect(() => {
 
-        instance.get('/products/highlighted').then(response => {
+        axiosInstance.get('/products/highlighted').then(response => {
             setProducts(response.data);
         });
 
     }, []);
 
     return <>
-        <div className={"hstack"}>
+        <div className={"hstack stack-center"}>
             {
-                products.map(product => <ProductComponent product={product}/>)
+                products.map((product, index) => <ProductComponent key={index} product={product}/>)
             }
         </div>
     </>

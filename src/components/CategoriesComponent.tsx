@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {getCategories} from "../api/CategoryRepository";
 import Category from "../api/models/Category";
+import {Link} from "react-router-dom";
 
 export default function CategoriesComponent() {
 
@@ -13,7 +14,7 @@ export default function CategoriesComponent() {
     }, [])
 
     return <ul>
-        {categories.map(category => <li key={category.name}><a href={'#'}>{category.name}</a></li>)}
+        {categories.map(category => <li key={category.name}><Link to={"/category/"+category.slug}>{category.name}</Link></li>)}
     </ul>
 
 }

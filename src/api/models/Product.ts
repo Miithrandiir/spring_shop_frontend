@@ -1,13 +1,16 @@
 export default class Product {
+
+    private _id: number;
     private _name: string;
-    private _price:number;
-    private _quantity:number;
+    private _price: number;
+    private _quantity: number;
 
-    private _description:string;
-    private _thumbnail:string;
+    private _description: string;
+    private _thumbnail: string;
 
 
-    constructor(name: string, price: number, quantity: number, description: string, thumbnail: string) {
+    constructor(id: number, name: string, price: number, quantity: number, description: string, thumbnail: string) {
+        this._id = id;
         this._name = name;
         this._price = price;
         this._quantity = quantity;
@@ -15,6 +18,10 @@ export default class Product {
         this._thumbnail = thumbnail;
     }
 
+
+    get id(): number {
+        return this._id;
+    }
 
     get name(): string {
         return this._name;
