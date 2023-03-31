@@ -3,31 +3,15 @@ import React, {useEffect, useState} from "react";
 import {UserLoader} from "../loader/UserLoader";
 import Order from "../api/models/Order";
 import OrderService from "../services/OrderService";
-import {removeOrder} from "../store/OrderSlice";
-import axiosInstance from "../axios";
-import Product from "../api/models/Product";
 
 export default function Account() {
 
     const user = useLoaderData();
 
     const [orders, setOrders] = useState<Order[]>([])
-    const [ordersPrice, setOrdersPrices] = useState<any>({})
 
     if (!(user instanceof UserLoader)) {
         return <h1>User not found</h1>
-    }
-
-    const resolveOrderPrice = async (order: Order): Promise<void> => {
-        const promises = order.items.map(async x => (await axiosInstance.get<Product>(x.product)).data.price * x.quantity);
-        const products = await Promise.all(promises)
-        const price = products.reduce((partialSum, a) => partialSum + a, 0);
-        setOrdersPrices({
-            ...ordersPrice,
-            ...{
-                [order.id]: price
-            }
-        })
     }
 
 
@@ -38,10 +22,6 @@ export default function Account() {
         orderService.getOrder().then(x => {
             //@ts-ignore
             setOrders(x)
-            x.forEach(x => {
-                //@ts-ignore
-                resolveOrderPrice(x).then().catch(console.error)
-            })
         })
 
     }, [user])
@@ -90,8 +70,10 @@ export default function Account() {
                                                key={order.id}>
 
                                         <h2>#{order.id}</h2>
-                                        <p>Nombre de produits: <b>{order.items.map(x=>x.quantity).reduce((partialSum, a) => partialSum + a, 0)}</b></p>
-                                        <p>Total: {ordersPrice.hasOwnProperty(order.id) ? ordersPrice[order.id] : 0} €</p>
+                                        <p>Nombre de
+                                            produits: <b>{order.items.map(x => x.quantity).reduce((partialSum, a) => partialSum + a, 0)}</b>
+                                        </p>
+                                        <p>Total: {order.price} €</p>
 
                                     </li>
                                 })
