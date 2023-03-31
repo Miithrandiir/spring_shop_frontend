@@ -37,7 +37,8 @@ function App({children}: { children: React.ReactNode }) {
                     <div className={"basket"}>
                         <i className={"fas fa-shopping-basket"}></i>
                         <Link to={"/basket"}>
-                            {basket.length > 0 && <span>[{basket.length}] </span>}
+                            {basket.length > 0 &&
+                                <span>[{basket.map(x => x.quantity).reduce((partialSum, a) => partialSum + a, 0)}] </span>}
                             Panier
                         </Link>
                     </div>
