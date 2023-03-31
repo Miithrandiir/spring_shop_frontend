@@ -2,14 +2,16 @@ export default class Order {
     private _id: number;
     private _createdAt: Date;
     private _user: string;
+    private _price: number;
     private _items: { product: string; quantity: number; }[];
 
 
-    constructor(id: number, createdAt: Date, user: string, items: { product: string; quantity: number }[]) {
+    constructor(id: number, createdAt: Date, user: string, items: { product: string; quantity: number }[], price: number = 0.0) {
         this._id = id;
         this._createdAt = createdAt;
         this._user = user;
         this._items = items;
+        this._price = price
     }
 
 
@@ -43,5 +45,14 @@ export default class Order {
 
     set items(value: { product: string; quantity: number }[]) {
         this._items = value;
+    }
+
+
+    get price(): number {
+        return this._price;
+    }
+
+    set price(value: number) {
+        this._price = value;
     }
 }
