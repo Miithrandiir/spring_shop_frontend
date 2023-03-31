@@ -75,7 +75,7 @@ export default function Basket() {
                                         <p>Quantité: <b>{basket.at(index) !== undefined && basket[index].quantity}</b>
                                         </p>
                                         <p>P.U: <b>{product.price} €</b></p>
-                                        <p>Total: {basket[index].quantity * product.price} €</p>
+                                        <p>Total: {basket.at(index) === undefined ? 0 : basket[index].quantity * product.price} €</p>
                                         <button onClick={() => dispatch(removeOrder(product.id))}
                                                 className={"btn btn-danger"}>
                                             <i className={"fas fa-trash"}/>
